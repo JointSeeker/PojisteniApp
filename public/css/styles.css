@@ -1,0 +1,30 @@
+body {
+    background: #505254;
+    background: linear-gradient(to left, #4d4d4d, #2c2c2c);
+}
+
+.btn-login {
+    font-size: 0.9rem;
+    letter-spacing: 0.05rem;
+    padding: 0.75rem 1rem;
+}
+
+.form-group label {
+    left: auto;
+}
+
+.tel label {
+}
+
+
+.card-img-left {
+    width: 45%;
+    /* Link to your background image using in the property below! */
+    background: scroll center url('https://images.pexels.com/photos/1586298/pexels-photo-1586298.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+    background-size: cover;
+}
+
+.container > .row {
+    height: 100vh;
+}
+

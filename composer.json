@@ -1,0 +1,20 @@
+{
+    "name": "jointseeker/pojisteni-app",
+    "description": "Pojistovaci aplikace",
+    "authors": [
+        {
+            "name": "JointSeeker",
+            "email": "jointseeker@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "aplikace\\": "./"
+        }
+    },
+    "require": {
+      "ext-mbstring": "*",
+      "ext-pdo": "*",
+        "vlucas/phpdotenv": "^5.5"
+    }
+}
