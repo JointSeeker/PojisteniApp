@@ -18,11 +18,11 @@ class Kontroler
     {
         $this->sablona = $sablona;
     }
-    
+
     /**
      * @param $pohled
      * @param array $parametry
-     * @return array|bool|string
+     * @return array|false|string|string[]
      */
     public function zpracuj($pohled, array $parametry = [])
     {

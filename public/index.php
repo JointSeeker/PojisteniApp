@@ -6,6 +6,7 @@
 mb_internal_encoding('UTF-8');
 
 use aplikace\controllers\AutorizacniKontroler;
+use aplikace\controllers\PojistenecKontroler;
 use aplikace\controllers\SitovyKontroler;
 use aplikace\core\Aplikace;
 
@@ -30,11 +31,15 @@ $aplikace = new Aplikace(dirname(__DIR__), $konfigurace);
 $aplikace->smerovac->ziskej('/', [SitovyKontroler::class, 'home']);
 $aplikace->smerovac->ziskej('/kontakt', [SitovyKontroler::class, 'kontakt']);
 $aplikace->smerovac->nastav('/kontakt', [SitovyKontroler::class, 'manipulujKontakt']);
+$aplikace->smerovac->ziskej('/profil', [SitovyKontroler::class, 'profil']);
+$aplikace->smerovac->ziskej('/pojistenci', [PojistenecKontroler::class, 'pojistenec']);
+$aplikace->smerovac->nastav('/pojistenci', [PojistenecKontroler::class, 'pojistenec']);
 
 $aplikace->smerovac->ziskej('/prihlaseni', [AutorizacniKontroler::class, 'prihlaseni']);
 $aplikace->smerovac->nastav('/prihlaseni', [AutorizacniKontroler::class, 'prihlaseni']);
 $aplikace->smerovac->ziskej('/registrace', [AutorizacniKontroler::class, 'registrace']);
 $aplikace->smerovac->nastav('/registrace', [AutorizacniKontroler::class, 'registrace']);
+$aplikace->smerovac->ziskej('/odhlaseni', [AutorizacniKontroler::class, 'odhlaseni']);
 
 
 $aplikace->spust();

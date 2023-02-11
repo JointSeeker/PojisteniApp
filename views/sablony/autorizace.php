@@ -6,8 +6,15 @@
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="color-scheme" content="dark light">
+    <meta name="description" content="Aplikace, Nabídka pojištění">
+    <meta name="keywords" content="Pojištění, Zdravý, Majetek, Pojištění majetku">
+    <meta name="author" content="JointSeeker">
 
+    <!--  Ikonka webu  -->
+    <link rel="icon" href="img/icon.ico">
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
@@ -15,15 +22,14 @@
     <link rel="stylesheet" href="css/styles.css" type="text/css">
     <title>Přihlášení</title>
 </head>
-<body>
-
-    {{obsah}}
-
-
-
+<body class="bg-dark">
+    <div class="autorizacni-stranka d-flex justify-content-center align-items-center">
+        {{obsah}}
+    </div>
 <!-- Optional JavaScript -->
+    <script src="js/pageTitle.js"></script>
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
         crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"

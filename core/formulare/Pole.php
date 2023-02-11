@@ -36,7 +36,7 @@ class Pole
     {
         return sprintf(
             '
-            <input type="%s" %s name="%s" class="form-control ml-2 %s" id="%s" placeholder="%s" autofocus>
+            <input type="%s" %s name="%s" class="form-control ml-2 %s" id="%s" placeholder="%s">
             <label for="%s" class="ml-2">%s</label>
             <div class="invalid-feedback">
                %s

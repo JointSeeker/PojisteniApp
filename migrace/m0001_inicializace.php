@@ -4,7 +4,7 @@ class m0001_inicializace
     public function nahraj()
     {
         $db = \aplikace\core\Aplikace::$aplikace->db;
-        $SQL = "CREATE TABLE pojistnik (
+        $SQL = "CREATE TABLE IF NOT EXISTS pojistnik (
                 id_pojistnik INT AUTO_INCREMENT PRIMARY KEY,
                 jmeno VARCHAR(60) NOT NULL,
                 prijmeni VARCHAR(60) NOT NULL,

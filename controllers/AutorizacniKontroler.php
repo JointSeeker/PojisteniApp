@@ -51,4 +51,10 @@ class AutorizacniKontroler extends Kontroler
         $this->nastavSablonu('autorizace');
         return $this->zpracuj('registrace', ['model' => $registrace]);
     }
+
+    public function odhlaseni(Pozadavek $pozadavek, Odezva $odezva)
+    {
+        Aplikace::$aplikace->odhlaseni();
+        $odezva->presmerovani('/');
+    }
 }

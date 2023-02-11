@@ -2,7 +2,7 @@
 
 namespace aplikace\core;
 
-class PojistnikModel
+abstract class PojistnikModel extends DbModel
 {
-
+    abstract public function ziskejJmenoProfilu(): string;
 }

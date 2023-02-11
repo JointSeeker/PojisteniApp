@@ -1,6 +1,7 @@
 <?php
 namespace aplikace\models;
-use aplikace\core\DbModel;
+use aplikace\core\Aplikace;
+use aplikace\core\PojistnikModel;
 
 /**
  * Class Pojistnik
@@ -8,7 +9,7 @@ use aplikace\core\DbModel;
  * @author JointSeeker <jointseeker@gmail.com>
  * @package aplikace\models
  */
-class Pojistnik extends DbModel
+class Pojistnik extends PojistnikModel
 {
     // deklarování všech proměných v registračním formuláři
     public string $jmeno = '';
@@ -36,7 +37,9 @@ class Pojistnik extends DbModel
     {
         return 'id_pojistnik';
     }
-    public function uloz()
+
+    // tady sis pridal navratovou hodnotu
+    public function uloz(): bool
     {
         $this->heslo = password_hash($this->heslo, PASSWORD_DEFAULT);
         return parent::uloz();
@@ -63,6 +66,7 @@ class Pojistnik extends DbModel
 
 
 
+
     public function stitky(): array
     {
         return [
@@ -83,5 +87,38 @@ class Pojistnik extends DbModel
         return ['jmeno', 'prijmeni','email', 'ulice', 'mesto', 'psc', 'tel', 'heslo'];
     }
 
+    public function ziskejJmenoProfilu(): string
+    {
+        return $this->jmeno.' '.$this->prijmeni;
+    }
 
+    public function ziskejUlici(): string
+    {
+        return $this->ulice;
+    }
+
+    public function ziskejMesto(): string
+    {
+        return $this->mesto;
+    }
+
+    public function ziskejPSC(): string
+    {
+        return $this->psc;
+    }
+
+    public function ziskejEmail(): string
+    {
+        return $this->email;
+    }
+
+    public function ziskejTelefon(): string
+    {
+        return $this->tel;
+    }
+
+    public function ziskejID(): string
+    {
+        return Aplikace::$aplikace->session->ziskej('pojistnik');
+    }
 }

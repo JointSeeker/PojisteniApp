@@ -1,6 +1,5 @@
 <?php
 namespace aplikace\controllers;
-use aplikace\core\Aplikace;
 use aplikace\core\Kontroler;
 use aplikace\core\Pozadavek;
 
@@ -19,10 +18,20 @@ class SitovyKontroler extends Kontroler
         ];
         return $this->zpracuj('home' , $parametry);
     }
+
+    public function profil()
+    {
+        return $this->zpracuj('profil');
+    }
+
     public function kontakt()
     {
         return $this->zpracuj('kontakt');
     }
+
+
+
+
     /**zacházení se zadanými daty z kontaktního formuláře
      */
     public function manipulujKontakt(Pozadavek $pozadavek)

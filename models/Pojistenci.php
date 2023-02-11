@@ -3,8 +3,9 @@
 namespace aplikace\models;
 
 use aplikace\core\DbModel;
+use aplikace\core\PojistenciModel;
 
-class Pojistenec extends DbModel
+class Pojistenci extends PojistenciModel
 {
     public string $id_pojistenec = '';
     public string $id_pojistnik = '';
@@ -55,4 +56,24 @@ class Pojistenec extends DbModel
     }
 
 
+    public function ziskejJmenoProfilu(): string
+    {
+        return $this->jmeno.' '.$this->prijmeni;
+    }
+
+
+    public function ziskejUlici(): string
+    {
+        return $this->ulice;
+    }
+
+    public function ziskejMesto(): string
+    {
+        return $this->mesto;
+    }
+
+    public function ziskejPSC(): string
+    {
+        return $this->psc;
+    }
 }

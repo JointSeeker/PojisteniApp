@@ -2,7 +2,9 @@
 
 namespace aplikace\controllers;
 
-class AdminKontroler
+use aplikace\core\Kontroler;
+
+class AdminKontroler extends Kontroler
 {
 
 }

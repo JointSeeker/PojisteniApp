@@ -20,6 +20,7 @@ class Databaze
         $this->pdo->setAttribute(\PDO::MYSQL_ATTR_INIT_COMMAND, "SET NAMES utf8");
     }
 
+
     //vytvoření databáze pokud není vytvořena
     public function aplikujMigrace()
     {

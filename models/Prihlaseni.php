@@ -18,7 +18,7 @@ class Prihlaseni extends Model
         ];
     }
 
-    public function prihlaseni()
+    public function prihlaseni() : bool
     {
         $pojistnik = Pojistnik::najdiJeden(['email' => $this->email]);
         if (!$pojistnik) {
@@ -26,11 +26,11 @@ class Prihlaseni extends Model
             return false;
         }
         if (!password_verify($this->heslo, $pojistnik->heslo)) {
-            $this->pridejChybu('heslo', 'Zadali jste špatné heslo. Zkuste to znovu');
+            $this->pridejChybu('heslo', 'Zadali jste špatné heslo');
             return false;
         }
-
-        return Aplikace::$aplikace->prihlaseni($pojistnik);
+        Aplikace::$aplikace->prihlaseni($pojistnik);
+        return true;
     }
 
     public function stitky(): array

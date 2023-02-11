@@ -1,6 +1,7 @@
 <?php
 namespace aplikace\core;
 
+use aplikace\models\Pojistenci;
 use aplikace\models\Pojistnik;
 
 /**
@@ -25,6 +26,9 @@ class Aplikace
     public Databaze $db;
     public ?DbModel $pojistnik;
 
+    public array $pojistenci;
+    public array $pojisteni;
+
 
     /**
      * @param $hlavniCesta
@@ -32,6 +36,7 @@ class Aplikace
     public function __construct($hlavniCesta, array $konfigurace)
     {
         //vytvoření instancí
+        // zakomentovat tridu uzivatel pred spustenim migrace
         $this->tridaUzivatel = $konfigurace['tridaUzivatel'];
         self::$HLAVNI_SLOZKA = $hlavniCesta;
         self::$aplikace = $this;
@@ -76,15 +81,25 @@ class Aplikace
         $this->kontroler = $kontroler;
     }
 
+    /**
+     * pokud je navstevnik tak nemuže být pojistnik
+     * @return bool
+     */
+    public static function Navstevnik()
+    {
+        return !self::$aplikace->pojistnik;
+    }
+
     public function prihlaseni(DbModel $pojistnik)
     {
         $this->pojistnik = $pojistnik;
         $primarniKlic = $pojistnik->primarniKlic();
         $primarniHodnota = $pojistnik->{$primarniKlic};
         $this->session->nastav('pojistnik', $primarniHodnota);
+
     }
 
-    public function odhlas()
+    public function odhlaseni()
     {
         $this->pojistnik = null;
         $this->session->odstran('pojistnik');

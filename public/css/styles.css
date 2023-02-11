@@ -1,6 +1,14 @@
-body {
-    background: #505254;
-    background: linear-gradient(to left, #4d4d4d, #2c2c2c);
+@charset "UTF-8";
+@import url(https://fonts.googleapis.com/css2?family=Jura:wght@500&display=swap);
+
+:root {
+    --primary-color: #73ff00b3;
+    --background-color: #808080c7;
+}
+
+
+*:focus {
+    outline: none;
 }
 
 .btn-login {
@@ -13,9 +21,6 @@ body {
     left: auto;
 }
 
-.tel label {
-}
-
 
 .card-img-left {
     width: 45%;
@@ -24,7 +29,11 @@ body {
     background-size: cover;
 }
 
-.container > .row {
-    height: 100vh;
-}
 
+/*************
+autorizacni stranka
+ */
+
+.autorizacni-stranka {
+    min-height: 100vh !important;
+}

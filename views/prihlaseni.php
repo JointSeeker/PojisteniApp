@@ -5,7 +5,7 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-lg-10 col-xl-9 mx-auto my-auto">
+        <div class="col-lg-10 col-xl-9 mx-auto my-auto" >
             <div class="card flex-row my-5 border-0 shadow rounded-3 overflow-hidden">
                 <div class="card-img-left d-none d-md-flex">
                     <!-- Background image for card set in CSS! -->
@@ -25,6 +25,7 @@
                         </div>
                         <hr class="my-4">
                         <a class="d-block text-center mt-2 small" href="/registrace">Ještě nemáte účet? Zaregistrujte se</a>
+                        <a class="d-block text-center mt-2 small" href="/">Zpět na hlavní stránku</a>
                     <?php \aplikace\core\formulare\Formular::konec() ?>
                 </div>
             </div>

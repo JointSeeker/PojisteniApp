@@ -47,59 +47,8 @@
                     </div>
                     <hr class="my-4">
                     <a class="d-block text-center mt-2 small" href="/prihlaseni">Již máte účet? Přihlašte se</a>
+                    <a class="d-block text-center mt-2 small" href="/">Zpět na hlavní stránku</a>
                     <?php \aplikace\core\formulare\Formular::konec() ?>
-                   <!-- <form action="" method="post">
-                        <div class="form-group row">
-                            <div class="form-floating col mb-3">
-                                <input type="text" name="firstname" class="form-control ml-2" id="floatingInputFirstname" placeholder="Jméno" autofocus>
-                                <label for="floatingInputFirstname" class="ml-2">Jméno</label>
-                            </div>
-                            <div class="form-floating col mb-3">
-                                <input type="text" name="lastname" class="form-control" id="floatingInputLastname" placeholder="Příjmení">
-                                <label for="floatingInputLastname">Příjmení</label>
-                            </div>
-                        </div>
-                        <div class="form-floating col mb-3">
-                            <input type="email" name="email" class="form-control" id="floatingInputEmail" placeholder="name@example.com">
-                            <label for="floatingInputEmail">Emailová adresa</label>
-                        </div>
-                        <hr>
-                        <div class="form-floating col mb-3">
-                            <input type="text" name="street" class="form-control ml-2" id="floatingInputStreet" placeholder="Ulice a č. p.">
-                            <label for="floatingInputStreet" class="ml-2">Ulice a č. p.</label>
-                        </div>
-                        <div class="form-group row">
-                            <div class="form-floating col mb-3">
-                                <input type="text" name="city" class="form-control ml-2" id="floatingInputCity" placeholder="Město">
-                                <label for="floatingInputCity" class="ml-2">Město</label>
-                            </div>
-                            <div class="form-floating col mb-3">
-                                <input type="text" name="postal" class="form-control" id="floatingInputPostal" placeholder="PSČ">
-                                <label for="floatingInputPostal">PSČ</label>
-                            </div>
-                        </div>
-                        <div class="form-floating col tel mb-3 d-flex">
-                            <span class="input-group-text">+420</span>
-                            <input type="tel" name="tel" class="form-control ml-2" id="floatingInputTel" placeholder="Telefon">
-                            <label for="floatingInputTel" class="ml-2">Telefon</label>
-                        </div>
-                        <hr>
-                        <div class="form-floating col mb-3">
-                            <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password">
-                            <label for="floatingPassword">Heslo</label>
-                        </div>
-
-                        <div class="form-floating col mb-3">
-                            <input type="password" name="passwordConfirm" class="form-control" id="floatingPasswordConfirm" placeholder="Confirm Password">
-                            <label for="floatingPasswordConfirm">Zadejte heslo znovu</label>
-                        </div>
-
-                        <div class="d-grid mb-2">
-                            <button class="btn btn-lg btn-primary btn-login fw-bold text-uppercase" type="submit">Registrovat</button>
-                        </div>
-                        <hr class="my-4">
-                        <a class="d-block text-center mt-2 small" href="/prihlaseni">Již máte účet? Přihlašte se</a>
-                    </form> -->
                 </div>
             </div>
         </div>

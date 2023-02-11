@@ -3,27 +3,46 @@
 namespace aplikace\controllers;
 
 use aplikace\core\Aplikace;
-use aplikace\core\Kontroler;
 use aplikace\core\Pozadavek;
-use aplikace\models\Pojistenec;
+use aplikace\models\Pojistenci;
 
 
-class RegistracniKontroler extends Kontroler
+
+class PojistenecKontroler extends AutorizacniKontroler
 {
     public function pojistenec(Pozadavek $pozadavek)
     {
-        $registrace = new Pojistenec();
+        $pojistenec = new Pojistenci();
         if ($pozadavek->jeNastav()){
-            $registrace->nactiData($pozadavek->ziskejTelo());
-            if ($registrace->overeni() && $registrace->uloz()) {
+            $pojistenec->nactiData($pozadavek->ziskejTelo());
+            if ($pojistenec->overeni() && $pojistenec->uloz()) {
                 Aplikace::$aplikace->session->nastavFlash('uspech', 'Úspěšně jste zaregistroval pojištěnce s jeho pojištěním');
                 Aplikace::$aplikace->odezva->presmerovani('pojistenci');
                 exit;
             }
+
             $this->nastavSablonu('hlavni');
-            return $this->zpracuj('pojistenci', ['model' => $registrace]);
+            return $this->zpracuj('pojistenci', ['model' => $pojistenec]);
+        }
+        $aplikace = Aplikace::$aplikace;
+        $aplikace->pojistenci = $pojistenec->najdi();
+        $this->nastavSablonu('hlavni');
+        return $this->zpracuj('pojistenci', ['model' => $pojistenec]);
+    }
+
+    public function listPojistencu()
+    {
+        $pojistenec = new Pojistenci();
+        if($_SESSION['pojistnik']){
+            if($pojistenec->najdi()){
+                $this->nastavSablonu('hlavni');
+                return $this->zpracuj('pojistenci', ['pojistenec' => $pojistenec]);
+            }
         }
         $this->nastavSablonu('hlavni');
-        return $this->zpracuj('pojistenci', ['model' => $registrace]);
+        return $this->zpracuj('pojistenci', ['pojistenec' => $pojistenec]);
     }
+
+
+
 }

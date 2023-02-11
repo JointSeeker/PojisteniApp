@@ -6,7 +6,7 @@ class m0002_pridat_sloupec_heslo
     public function nahraj()
     {
         $db = \aplikace\core\Aplikace::$aplikace->db;
-        $db->pdo->exec("ALTER TABLE pojistnik ADD COLUMN heslo VARCHAR(512) NOT NULL;");
+        $db->pdo->exec("ALTER TABLE pojistnik ADD COLUMN IF NOT EXISTS heslo VARCHAR(512) NOT NULL;");
     }
     public function vymaz()
     {
