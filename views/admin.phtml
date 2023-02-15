@@ -1,0 +1,27 @@
+<?php
+/** @var $model Admin*/
+/** @var  $this  */
+
+$this->titulek = 'Administrátor';
+
+?>
+
+<div class="login-dark">
+    <?php $formular = \aplikace\core\formulare\Formular::zacatek('', 'post') ?>
+        <h2 class="sr-only">Přihlášení</h2>
+        <div class="illustration">
+            <i class="icon ion-ios-locked-outline"></i>
+        </div>
+        <div class="form-group">
+            <?php echo $formular->poleAdmin($model, 'email')->poleEmailu() ?>
+        </div>
+        <div class="form-group">
+            <?php echo $formular->poleAdmin($model, 'heslo')->poleHesla() ?>
+        </div>
+        <div class="form-group">
+            <button class="btn btn-primary btn-block" type="submit">Přihlásit</button>
+        </div>
+        <hr>
+        <a href="/" class="forgot">Hlavní stránka</a>
+    <?php \aplikace\core\formulare\Formular::konec() ?>
+</div>
