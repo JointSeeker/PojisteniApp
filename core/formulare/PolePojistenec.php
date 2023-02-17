@@ -2,7 +2,7 @@
 
 namespace aplikace\core\formulare;
 
-class PoleVyber
+class PolePojistenec
 {
 
 }
