@@ -1,0 +1,222 @@
+<?php
+/**
+ * User: JointSeeker
+ * Date: 18/2/2023
+ */
+/** @var $pojistenec \aplikace\models\PojistenciVse */
+/** @var $pojisteni \aplikace\models\PojisteniVse */
+
+/** @var  $this \aplikace\core\Pohled */
+use aplikace\core\Aplikace;
+?>
+<?php foreach (Aplikace::$aplikace->pojistenciVse as $pojistenec):?>
+<div class="flex-md-column flex-sm-column flex-column d-flex flex-lg-row justify-content-center align-items-center mx-5">
+        <section class="about-profile col-auto">
+            <div class="flex-column d-flex align-self-center justify-content-center me-0 me-lg-5">
+                <div class="d-flex flex-row">
+                    <img src="img/klient.png" class="user-img mx-5 shadow my-3 img-thumbnail col-auto">
+
+                    <div class="col-auto">
+                        <h2><?php echo htmlentities($pojistenec->ziskejJmenoProfilu()); ?></h2>
+                        <hr>
+                        <div class="attributes row">
+                            <div class="address col-auto">
+                                <p><?php echo htmlentities($pojistenec->ziskejUlici()); ?></p>
+                                <p><?php echo htmlentities($pojistenec->ziskejMesto()); ?></p>
+                                <p><?php echo htmlentities($pojistenec->ziskejPSC()); ?></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row-cols-3 text-center align-self-center mx-auto">
+                    <div class="mx-auto d-flex flex-row">
+                        <?php $formular = \aplikace\core\formulare\Formular::zacatek('/smazat', 'get'); ?>
+                        <input type="hidden" name="id_pojistenec" value="<?php echo htmlentities($pojistenec->ziskejIdPojistence()); ?>">
+                        <button type="submit" class="btn btn-danger mx-auto">Odstranit</button>
+                        <?php \aplikace\core\formulare\Formular::konec(); ?>
+                        <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#modal<?php echo htmlentities($pojistenec->ziskejIdPojistence()); ?>">Editovat</button>
+                        <!-- Modal -->
+                        <div class="modal fade" id="modal<?php echo htmlentities($pojistenec->ziskejIdPojistence()); ?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content mx-5">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <input type="hidden" name="id_pojistenec" value="<?php echo htmlentities($pojistenec->ziskejIdPojistence()); ?>">
+                                    <div class="mx-5 mb-3">
+                                        <?php $formular = \aplikace\core\formulare\Formular::zacatek('jmeno', 'post') ?>
+                                        <input type="hidden" name="id_pojistenec" value="<?php echo htmlentities($pojistenec->ziskejIdPojistence()); ?>">
+                                        <div class="flex-md-row d-flex flex-column justify-content-center align-items-center mb-3">
+                                            <div class="input-group">
+                                                <span class="input-group-text"><?php echo htmlentities($pojistenec->ziskejJmeno()); ?></span>
+                                                <div class="form-floating col">
+                                                    <?php echo $formular->pole($pojistenec, 'jmeno')->poleTextu() ?>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <button type="submit" class="btn ms-2 btn-warning">Editovat</button>
+                                            </div>
+                                        </div>
+                                        <?php \aplikace\core\formulare\Formular::konec() ?>
+                                    </div>
+
+                                    <div class="mx-5 mb-3">
+                                        <?php $formular = \aplikace\core\formulare\Formular::zacatek('prijmeni', 'post') ?>
+                                        <input type="hidden" name="id_pojistenec" value="<?php echo htmlentities($pojistenec->ziskejIdPojistence()); ?>">
+                                        <div class="flex-md-row d-flex flex-column justify-content-center align-items-center mb-3">
+                                            <div class="input-group">
+                                                <span class="input-group-text"><?php echo htmlentities($pojistenec->ziskejPrijmeni()); ?></span>
+                                                <div class="form-floating col">
+                                                    <?php echo $formular->pole($pojistenec, 'prijmeni')->poleTextu() ?>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <button type="submit" class="btn ms-2 btn-warning">Editovat</button>
+                                            </div>
+                                        </div>
+                                        <?php \aplikace\core\formulare\Formular::konec() ?>
+                                    </div>
+
+                                    <div class="mx-5 mb-3">
+                                        <?php $formular = \aplikace\core\formulare\Formular::zacatek('ulice', 'post') ?>
+                                        <input type="hidden" name="id_pojistenec" value="<?php echo htmlentities($pojistenec->ziskejIdPojistence()); ?>">
+                                        <div class="flex-md-row d-flex flex-column justify-content-center align-items-center mb-3">
+                                            <div class="input-group">
+                                                <span class="input-group-text"><?php echo htmlentities($pojistenec->ziskejUlici()); ?></span>
+                                                <div class="form-floating col">
+                                                    <?php echo $formular->pole($pojistenec, 'ulice')->poleTextu() ?>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <button type="submit" class="btn ms-2 btn-warning">Editovat</button>
+                                            </div>
+                                        </div>
+                                        <?php \aplikace\core\formulare\Formular::konec() ?>
+                                    </div>
+
+
+                                    <div class="mx-5 mb-3">
+                                        <?php $formular = \aplikace\core\formulare\Formular::zacatek('mesto', 'post') ?>
+                                        <input type="hidden" name="id_pojistenec" value="<?php echo htmlentities($pojistenec->ziskejIdPojistence()); ?>">
+                                        <div class="flex-md-row d-flex flex-column justify-content-center align-items-center mb-3">
+                                            <div class="input-group">
+                                                <span class="input-group-text"><?php echo htmlentities($pojistenec->ziskejMesto()); ?></span>
+                                                <div class="form-floating col">
+                                                    <?php echo $formular->pole($pojistenec, 'mesto')->poleTextu() ?>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <button type="submit" class="btn ms-2 btn-warning">Editovat</button>
+                                            </div>
+                                        </div>
+                                        <?php \aplikace\core\formulare\Formular::konec() ?>
+                                    </div>
+
+                                    <div class="mx-5 mb-3">
+                                        <?php $formular = \aplikace\core\formulare\Formular::zacatek('psc', 'post') ?>
+                                        <input type="hidden" name="id_pojistenec" value="<?php echo htmlentities($pojistenec->ziskejIdPojistence()); ?>">
+                                        <div class="flex-md-row d-flex flex-column justify-content-center align-items-center mb-3">
+                                            <div class="input-group">
+                                                <span class="input-group-text"><?php echo htmlentities($pojistenec->ziskejPSC()); ?></span>
+                                                <div class="form-floating col">
+                                                    <?php echo $formular->pole($pojistenec, 'psc')->poleTextu() ?>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <button type="submit" class="btn ms-2 btn-warning">Editovat</button>
+                                            </div>
+                                        </div>
+                                        <?php \aplikace\core\formulare\Formular::konec() ?>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Ukončit editaci</button>
+                                    </div>
+                                    <?php \aplikace\core\formulare\Formular::konec(); ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="clearfix"></div>
+        <section class="mt-5 align-self-center justify-content-center">
+            <h3 class="text-center">Sjednaná pojištění</h3>
+            <table class="table table-bordered table-striped table-responsive">
+                <thead>
+                <tr>
+                    <th scope="col">Pojištění</th>
+                    <th scope="col">Částka</th>
+                </tr>
+                </thead>
+                <tbody>
+                <?php if ($pojistenec->ziskejNazev() != null ) ?>
+                <?php foreach ($pojistenec->ziskejNazev() as $index => $nazev ): ?>
+                <?php
+
+                    echo '<pre>';
+                    var_dump($index, $nazev);
+                    echo '</pre>';
+                    exit;?>
+                    <tr class="clearfix">
+                        <td><?php echo htmlentities($nazev); ?></td>
+                        <td><?php echo htmlentities($pojistenec->ziskejHodnotu()[$index]); ?></td>
+                        <td class="bg-transparent border-0 align-content-between">
+                            <div class="d-flex flex-row">
+                                <?php $formular = \aplikace\core\formulare\Formular::zacatek('/odstranit=pojisteni', 'get'); ?>
+                                <input type="hidden" name="id_pojisteni" value="<?php echo htmlentities($pojistenec->ziskejIdPojisteni()[$index]); ?>">
+                                <input type="hidden" name="id_pojistenec" value="<?php echo htmlentities($pojistenec->ziskejIdPojistence());?>">
+                                <button type="submit" class="btn btn-danger">Odstranit</button>
+                                <?php \aplikace\core\formulare\Formular::konec(); ?>
+                                <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#modal<?php echo htmlentities($pojistenec->ziskejIdPojisteni()[$index]); ?>">Editovat</button>
+                                <!-- Modal -->
+                                <div class="modal fade" id="modal<?php echo htmlentities($pojistenec->ziskejIdPojisteni()[$index]); ?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h1 class="modal-title fs-5" id="staticBackdropLabel">Editace hodnoty pojištění</h1>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <?php $formular = \aplikace\core\formulare\Formular::zacatek('/upravit=pojistenec=pojisteni', 'post'); ?>
+                                            <div class="modal-body">
+                                                <input type="hidden" name="id_pojistnik" value="0">
+                                                <input type="hidden" name="id_pojistenec" value="0">
+                                                <input type="hidden" name="id_pojisteni_typ" value="0">
+                                                <input type="hidden" name="id_pojisteni" value="<?php echo htmlentities($pojistenec->ziskejIdPojisteni()[$index]); ?>">
+                                                <div class="field">Aktuální hodnota pojištění je <?php echo htmlentities($pojistenec->ziskejHodnotu()[$index]); ?>Kč</div>
+                                                <label for="hodnota" >Nová hodnota pojištění</label>
+                                                <?php echo $formular->pole($pojisteni, 'hodnota')->poleCislo(); ?>
+
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                <button type="" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal">Editovat</button>
+                                            </div>
+                                            <?php \aplikace\core\formulare\Formular::konec(); ?>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+                <?php ?>
+                </tbody>
+            </table>
+        </section>
+    </div>
+    <div class="w-100 "></div>
+    <hr class="w-50 my-5">
+<?php endforeach; ?>
+<div class="row col-8" id="formularPojisteni">
+    <div class="col-lg-10 col-xl-9 mx-auto my-auto">
+        <div class="card flex-row my-5 border-0 shadow rounded-3 overflow-hidden">
+            <div class="card-body p-4 p-sm-5">
+                <h5 class="card-title text-center mb-5 fw-light fs-2">Přidejte pojištění k pojištěnci</h5>
+
+        </div
+    </div>
+</div>
+</div>
+

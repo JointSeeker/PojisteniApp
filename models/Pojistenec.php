@@ -2,10 +2,10 @@
 
 namespace aplikace\models;
 
-use aplikace\core\DbModel;
-use aplikace\core\PojistenciModel;
+use aplikace\core\Aplikace;
+use aplikace\core\SpojeniModel;
 
-class Pojistenci extends PojistenciModel
+class Spojeni extends SpojeniModel
 {
     public string $id_pojistenec = '';
     public string $id_pojistnik = '';
@@ -14,6 +14,10 @@ class Pojistenci extends PojistenciModel
     public string $ulice = '';
     public string $mesto = '';
     public string $psc = '';
+    public array $nazev = [];
+    public array $popis = [];
+    public array $hodnota = [];
+    public array $id_pojisteni = [];
 
 
 
@@ -24,7 +28,7 @@ class Pojistenci extends PojistenciModel
 
     public static function primarniKlic(): string
     {
-        return 'id_pojistnik';
+        return 'id_pojistenec';
     }
 
     public function pravidla(): array
@@ -34,7 +38,7 @@ class Pojistenci extends PojistenciModel
             'prijmeni' => [self::PRAVIDLO_POZADOVANO],
             'ulice' => [self::PRAVIDLO_POZADOVANO],
             'mesto' => [self::PRAVIDLO_POZADOVANO],
-            'psc' => [self::PRAVIDLO_POZADOVANO, [self::PRAVIDLO_MIN, 'min' => 5], [self::PRAVIDLO_MAX, 'max' => 6]],
+            'psc' => [self::PRAVIDLO_POZADOVANO, self::PRAVIDLO_CISLO, [self::PRAVIDLO_MIN, 'min' => 5], [self::PRAVIDLO_MAX, 'max' => 6]],
         ];
     }
 
@@ -61,6 +65,16 @@ class Pojistenci extends PojistenciModel
         return $this->jmeno.' '.$this->prijmeni;
     }
 
+    public function ziskejPrijmeni(): string
+    {
+        return $this->prijmeni;
+    }
+
+    public function ziskejJmeno(): string
+    {
+        return $this->jmeno;
+    }
+
 
     public function ziskejUlici(): string
     {
@@ -75,5 +89,30 @@ class Pojistenci extends PojistenciModel
     public function ziskejPSC(): string
     {
         return $this->psc;
+    }
+
+    public function ziskejNazev()
+    {
+        return $this->nazev;
+    }
+
+    public function ziskejPopis()
+    {
+        return $this->popis;
+    }
+
+    public function ziskejIdPojistence()
+    {
+        return $this->id_pojistenec;
+    }
+
+    public function ziskejHodnotu()
+    {
+        return $this->hodnota;
+    }
+
+    public function ziskejIdPojisteni()
+    {
+        return $this->id_pojisteni;
     }
 }
